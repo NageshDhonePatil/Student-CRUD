@@ -1,0 +1,42 @@
+﻿@page
+@model StudentsCRUD.Pages.IndexModel
+
+@section styles {
+    <abp-style src="/Pages/Index.cshtml.css" />
+}
+@section scripts {
+    <abp-script src="/Pages/Index.cshtml.js" />
+}
+
+<div class="container">
+    <abp-card>
+        <abp-card-header>
+            <abp-card-title>
+                STUDENT LIST
+            </abp-card-title>
+        </abp-card-header>
+        <abp-card-body>
+            <!-- FORM FOR NEW TODO ITEMS -->
+            <form id="NewItemForm" class="row row-cols-lg-auto g-3 align-items-center">
+                <div class="col-12">
+                    <div class="input-group">
+                        <input id="NewItemText" type="text" class="form-control" placeholder="enter text...">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+            <!-- TODO ITEMS LIST -->
+            <ul id="StudentList">
+                @foreach (var Student in Model.Students)
+                {
+                    <li data-id="@Student.Id">
+                        <i class="fa fa-trash-o"></i> @Student.Name
+                        <i class="fa fa-trash-o"></i> @Student.Email
+                    </li>
+                }
+            </ul>
+        </abp-card-body>
+    </abp-card>
+</div>
